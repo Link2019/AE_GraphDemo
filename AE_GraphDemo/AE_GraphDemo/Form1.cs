@@ -194,6 +194,7 @@ namespace AE_GraphDemo
         /// <param name="pGeometry">绘制形状(线、面)</param>
         private void AddFeature(string layerName, IGeometry pGeometry)
         {
+            ILayer pLayer = GetLayerByName(layerName);
             //得到要添加地物的图层
             IFeatureLayer pFeatureLayer = GetLayerByName(layerName) as IFeatureLayer;
             if (pFeatureLayer != null)
@@ -229,7 +230,7 @@ namespace AE_GraphDemo
                     return;
                 }
                 //判断:几何图形是否为多边形
-                if (pGeometry.GeometryType.ToString() == "ESRIGeometryPolygon")
+                if (pGeometry.GeometryType.ToString() == "esriGeometryPolygon")
                 {
                     int index = pFeatureBuffer.Fields.FindField("STATE_NAME");
                     pFeatureBuffer.set_Value(index, "California");
@@ -242,6 +243,10 @@ namespace AE_GraphDemo
                 w.StopEditOperation();
                 //结束事务操作
                 w.StopEditing(true);
+
+                //释放游标
+                Marshal.ReleaseComObject(pFtCursor);
+                axMapControl1.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeography, pLayer, null);
             }
             else
             {
