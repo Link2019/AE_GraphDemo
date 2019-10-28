@@ -19,8 +19,8 @@ namespace AE_GraphDemo
     enum Operation
     {
         ConstructionPoint,//绘制点
-        ConstructionPolyLine,//绘制折线
-        ConstructionPolygon,//绘制画
+        ConstructionPolyLine,//绘制线
+        ConstructionPolygon,//绘制面
         Nothing
     }
 
@@ -196,7 +196,7 @@ namespace AE_GraphDemo
         {
             ILayer pLayer = GetLayerByName(layerName);
             //得到要添加地物的图层
-            IFeatureLayer pFeatureLayer = GetLayerByName(layerName) as IFeatureLayer;
+            IFeatureLayer pFeatureLayer = pLayer as IFeatureLayer;
             if (pFeatureLayer != null)
             {
                 //定义一个地物类, 把要编辑的图层转化为定义的地物类
