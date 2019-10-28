@@ -89,6 +89,7 @@
             this.点ToolStripMenuItem.Name = "点ToolStripMenuItem";
             this.点ToolStripMenuItem.Size = new System.Drawing.Size(32, 21);
             this.点ToolStripMenuItem.Text = "点";
+            this.点ToolStripMenuItem.Click += new System.EventHandler(this.点ToolStripMenuItem_Click);
             // 
             // 多点ToolStripMenuItem
             // 
@@ -152,6 +153,7 @@
             this.axMapControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axMapControl1.OcxState")));
             this.axMapControl1.Size = new System.Drawing.Size(587, 375);
             this.axMapControl1.TabIndex = 0;
+            this.axMapControl1.OnMouseMove += new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnMouseMoveEventHandler(this.axMapControl1_OnMouseMove);
             // 
             // toolStripStatusLabel1
             // 
@@ -180,6 +182,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "图形绘制";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
